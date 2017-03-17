@@ -12,15 +12,15 @@ java.runtime.version=1.8.0_101-b13
 -Xmx128M -Xms128M -XX:+UseParallelOldGC|gcPerformanceWithFixedAllocationMultithread|129| 0 | 216 | 97.46 
 -Xmx128M -Xms128M -XX:+UseParallelOldGC|gcPerformanceWithRandomAllocationMultithread|129| 1 | 88 | 35.96 
  | | | | 
--Xmx128M -Xms128M -XX:+UseParallelOldGC|gcPerformanceWithFixedAllocation|514| 2 | 168 | 94.16 
+-Xmx512M -Xms512M -XX:+UseParallelOldGC|gcPerformanceWithFixedAllocation|514| 2 | 168 | 94.16 
 -Xmx512M -Xms512M -XX:+UseParallelOldGC|gcPerformanceWithRandomAllocation|514| 0 | 29 | 15.94 
 -Xmx512M -Xms512M -XX:+UseParallelOldGC|gcPerformanceWithFixedAllocationMultithread|514| 0 | 69 | 30.16 
 -Xmx512M -Xms512M -XX:+UseParallelOldGC|gcPerformanceWithRandomAllocationMultithread|514| 0 | 71 | 40.74 
  | | | | 
--Xmx1024M -Xms1024M -XX:+UseParallelOldGC|gcPerformanceWithFixedAllocation|514| 7 | 380 | 169.36 
--Xmx1024M -Xms1024M -XX:+UseParallelOldGC|gcPerformanceWithRandomAllocation|514| 0 | 61 | 18.04 
--Xmx1024M -Xms1024M -XX:+UseParallelOldGC|gcPerformanceWithFixedAllocationMultithread|514| 0 | 102 | 61.34 
--Xmx1024M -Xms1024M -XX:+UseParallelOldGC|gcPerformanceWithRandomAllocationMultithread|514| 0 | 58 | 36.98 
+-Xmx1024M -Xms1024M -XX:+UseParallelOldGC|gcPerformanceWithFixedAllocation|1029| 7 | 380 | 169.36 
+-Xmx1024M -Xms1024M -XX:+UseParallelOldGC|gcPerformanceWithRandomAllocation|1029| 0 | 61 | 18.04 
+-Xmx1024M -Xms1024M -XX:+UseParallelOldGC|gcPerformanceWithFixedAllocationMultithread|1029| 0 | 102 | 61.34 
+-Xmx1024M -Xms1024M -XX:+UseParallelOldGC|gcPerformanceWithRandomAllocationMultithread|1029| 0 | 58 | 36.98 
  | | | | 
 -Xmx128M -Xms128M -XX:+UseG1GC|gcPerformanceWithFixedAllocation|134| 3 | 175 | 86.02 
 -Xmx128M -Xms128M -XX:+UseG1GC|gcPerformanceWithRandomAllocation|134|  0 | 47 | 20.32 
@@ -31,11 +31,6 @@ java.runtime.version=1.8.0_101-b13
 -Xmx512M -Xms512M -XX:+UseG1GC|gcPerformanceWithRandomAllocation|536| 0 | 29 | 14.94 
 -Xmx512M -Xms512M -XX:+UseG1GC|gcPerformanceWithFixedAllocationMultithread|536|  0 | 149 | 41.9 
 -Xmx512M -Xms512M -XX:+UseG1GC|gcPerformanceWithRandomAllocationMultithread|536| 0 | 240 | 148.94 
- | | | | 
--Xmx512M -Xms512M -XX:+UseG1GC|gcPerformanceWithFixedAllocation|536| 12 | 2861 | 536.52 
--Xmx512M -Xms512M -XX:+UseG1GC|gcPerformanceWithRandomAllocation|536| 0 | 29 | 14.94 
--Xmx512M -Xms512M -XX:+UseG1GC|gcPerformanceWithFixedAllocationMultithread|536|  0 | 149 | 41.9 
--Xmx512M -Xms512M -XX:+UseG1GC|gcPerformanceWithRandomAllocationMultithread|536| 0 | 240 | 148.94
  | | | | 
 -Xmx1024M -Xms1024M -XX:+UseG1GC|gcPerformanceWithFixedAllocation|1073| 34 | 169 | 87.2
 -Xmx1024M -Xms1024M -XX:+UseG1GC|gcPerformanceWithRandomAllocation|1073| 11 | 1446 | 402.58
