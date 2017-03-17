@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>JVM-internals</artifactId>
@@ -17,30 +17,21 @@
     </properties>
     <build>
         <plugins>
-            <!--<plugin>-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-compiler-plugin</artifactId>-->
-                <!--<version>3.6.1</version>-->
-                <!--<configuration>-->
-                    <!--<fork>true</fork>-->
-                    <!--<meminitial>128m</meminitial>-->
-                    <!--<maxmem>128m</maxmem>-->
-                    <!--<source>1.8</source>-->
-                    <!--<target>1.8</target>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <!--(-XX:+UseSerialGC)-->
-                    <argLine>-Xmx128M -Xms128M -XX:+UseSerialGC</argLine>
-                    <argLine>-Xmx512M -Xms512M -XX:+UseSerialGC</argLine>
-                    <argLine>-Xmx1024M -Xms1024M -XX:+UseSerialGC</argLine>
+                    <!--<argLine>-Xmx128M -Xms128M -XX:+UseParallelOldGC</argLine>-->
+                    <!--<argLine>-Xmx512M -Xms512M -XX:+UseParallelOldGC</argLine>-->
+                    <!--<argLine>-Xmx1024M -Xms1024M -XX:+UseParallelOldGC</argLine>-->
 
-                    <argLine>-Xmx128M -Xms128M -XX:+UseParallelOldGC</argLine>
-                    <argLine>-Xmx128M -Xms128M -XX:+UseParallelOldGC</argLine>
-                    <argLine>-Xmx128M -Xms128M -XX:+UseParallelOldGC</argLine>
+                    <!--<argLine>-Xmx128M -Xms128M -XX:+UseG1GC</argLine>-->
+                    <!--<argLine>-Xmx512M -Xms512M -XX:+UseG1GC</argLine>-->
+                    <!--<argLine>-Xmx1024M -Xms1024M -XX:+UseG1GC</argLine>-->
+
+                    <!--<argLine>-Xmx128M -Xms128M -XX:+UseConcMarkSweepGC</argLine>-->
+                    <!--<argLine>-Xmx512M -Xms512M -XX:+UseConcMarkSweepGC</argLine>-->
+                    <argLine>-Xmx1024M -Xms1024M -XX:+UseConcMarkSweepGC</argLine>
                 </configuration>
             </plugin>
         </plugins>
