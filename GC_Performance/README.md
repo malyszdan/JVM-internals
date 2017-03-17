@@ -1,3 +1,9 @@
+Run on Ubuntu 16.04, Intel(R) Core(TM) i7-2630QM CPU @ 2.00GHz, 4GB RAM
+java.runtime.name=Java(TM) SE Runtime Environment
+java.vm.version=25.101-b13
+java.vm.name=Java HotSpot(TM) 64-Bit Server V
+java.runtime.version=1.8.0_101-b13
+
 
 <argLine>$VALUE</argLine> | TestCase | Runtime.getRuntime().maxMemory() [MB] | min | max | average
  --------------------------|----------|---------------------------------------|-----|-----|--------
