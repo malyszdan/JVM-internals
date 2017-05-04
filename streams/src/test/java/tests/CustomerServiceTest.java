@@ -1,5 +1,6 @@
 package tests;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.is;
 
@@ -16,8 +17,8 @@ import entities.Customer;
 
 public class CustomerServiceTest {
 
+    private static final int NUMBER_OF_CUSTOMERS = 10;
     private static CustomerServiceInterface cs;
-
     private static Product product;
 
     private List<Customer> res;
@@ -26,9 +27,10 @@ public class CustomerServiceTest {
 
     @BeforeClass
     public static void setUp() {
-        cs = new CustomerService(DataProducer.getTestData(10));
-        product = new Product(11, "Product: 11", Double.valueOf(11));
+        cs = new CustomerService(DataProducer.getTestData(NUMBER_OF_CUSTOMERS));
+        product = new Product(NUMBER_OF_CUSTOMERS + 1, "Product: 11", Double.valueOf(11));
     }
+
 
     @Test
     public void testFindByName() throws Exception {
@@ -52,7 +54,12 @@ public class CustomerServiceTest {
         res2 = cs.customersWhoBoughtMoreThan(7);
 
         assertEquals(7, cs.customersWhoBoughtMoreThan(0).size());
-        assertEquals(Collections.<Customer> emptyList(), res2);
+        assertEquals(Collections.<Customer>emptyList(), res2);
+    }
+
+    @Test
+    public void customersWhoSpentMoreThanTest() throws Exception {
+        assertTrue(!cs.customersWhoSpentMoreThan(0).isEmpty());
     }
 
     @Test
@@ -64,7 +71,7 @@ public class CustomerServiceTest {
 
     @Test
     public void addProductToAllCustomersTest() throws Exception {
-        CustomerService cs2 = new CustomerService(DataProducer.getTestData(10));
+        CustomerService cs2 = new CustomerService(DataProducer.getTestData(NUMBER_OF_CUSTOMERS));
 
         cs2.addProductToAllCustomers(product);
 
@@ -85,5 +92,28 @@ public class CustomerServiceTest {
         cs.addProductToAllCustomers(product);
 
         assertTrue(cs.mostPopularProduct().get(0).equals(product));
+    }
+
+    @Test
+    public void avgOrdersTest() throws Exception {
+        assertTrue(cs.avgOrders(true) > 0.0);
+    }
+
+    @Test
+    public void countBuysTest() throws Exception {
+        CustomerService cs2 = new CustomerService(DataProducer.getTestData(NUMBER_OF_CUSTOMERS));
+
+        cs2.addProductToAllCustomers(product);
+
+        assertThat(cs2.countBuys(product), is(NUMBER_OF_CUSTOMERS));
+    }
+
+    @Test
+    public void countCustomersWhoBought() throws Exception {
+        CustomerService cs2 = new CustomerService(DataProducer.getTestData(NUMBER_OF_CUSTOMERS));
+
+        cs2.addProductToAllCustomers(product);
+
+        assertThat(cs2.countCustomersWhoBought(product), is(NUMBER_OF_CUSTOMERS));
     }
 }

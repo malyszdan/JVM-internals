@@ -1,6 +1,7 @@
 package services;
 
 import java.lang.reflect.Field;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -44,8 +45,9 @@ public class CustomerService implements CustomerServiceInterface {
 
     @Override
     public List<Customer> customersWhoSpentMoreThan(double price) {
-        // TODO Auto-generated method stub
-        return null;
+        return customers.stream().filter(
+                customer -> customer.getBoughtProducts().stream().mapToDouble(p -> p.getPrice()).sum() > price)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -64,8 +66,9 @@ public class CustomerService implements CustomerServiceInterface {
 
     @Override
     public double avgOrders(boolean includeEmpty) {
-        // TODO Auto-generated method stub
-        return 0;
+        return customers.stream().filter(customer -> customer.getBoughtProducts().size() >= (includeEmpty ? 0 : 1))
+                .map(customer -> customer.getBoughtProducts()).flatMap(List::stream)
+                .collect(Collectors.toList()).stream().mapToDouble(Product::getPrice).sum()/customers.size();
     }
 
     @Override
@@ -76,26 +79,21 @@ public class CustomerService implements CustomerServiceInterface {
     @Override
     public List<Product> mostPopularProduct() {
        return customers.stream()
-                // map person to tag & filter null tag out
                 .map(customers -> customers.getBoughtProducts()).filter(Objects::nonNull)
-                // summarize tags
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                // fetch the max entry
                 .entrySet().stream().max(Map.Entry.comparingByValue())
-                // map to tag
                 .map(Map.Entry::getKey).orElse(null);
     }
 
     @Override
     public int countBuys(Product p) {
-        // TODO Auto-generated method stub
-        return 0;
+        return Collections.frequency(customers.stream().filter(customer -> customer.getBoughtProducts().contains(p))
+                .map(customer -> customer.getBoughtProducts()).flatMap(List::stream).collect(Collectors.toList()), p);
     }
 
     @Override
     public int countCustomersWhoBought(Product p) {
-        // TODO Auto-generated method stub
-        return 0;
+        return (int) customers.stream().map(Customer::getBoughtProducts).filter(products -> products.contains(p)).count();
     }
 
 }
