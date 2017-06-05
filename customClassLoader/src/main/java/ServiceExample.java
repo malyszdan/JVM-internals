@@ -20,7 +20,6 @@ public class ServiceExample {
         BasicConfigurator.configure();
         get("/", (request, response) -> {
             byte[] bytes = Files.readAllBytes(Paths.get("src/main/resources/Hello.class"));
-//            byte[] bytes = Files.readAllBytes(Paths.get());
             HttpServletResponse raw = response.raw();
             raw.getOutputStream().write(bytes);
             logger.warn("Reading from service");
